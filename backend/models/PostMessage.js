@@ -8,10 +8,10 @@ const postSchema = mongoose.Schema({
     message: String, 
     creator: String, 
     tags:  [String], 
-    selectedFile: String,  // Conversion d'une img en string avec b64
+    selectedFile: String, 
     likeCount: {
-        Number,
-        default: 0
+        type: Number,
+        default: 0,
     },
     createdAt: {
         type: Date,

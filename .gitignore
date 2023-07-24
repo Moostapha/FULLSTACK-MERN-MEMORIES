@@ -12,5 +12,5 @@
 # variable d'environnement pour connexion mongoDB sécurisée
 .env
 
-# mémo perso
-memo.txt
+# mémo perso + docs
+docs

@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';             // Variables d'environnement pour cacher user et password pour connection db
-dotenv.config();                        // loads env. var. via process.env from the .env file
+import dotenv from 'dotenv';                // Variables d'environnement pour cacher user et password pour connection db
+dotenv.config();                           // loads env. var. via process.env from the .env file
 
 import express from 'express';           // Framework node.js
 import mongoose from 'mongoose';        // Object Data Modelling library for mongoDB and Node.js
@@ -11,20 +11,18 @@ import cors from 'cors';              // Cross Origin Ressource Sharing
 import postRoutes from './routes/posts.js';
 
 
-
 // init express
 const app = express();
-
-// init routes
-app.use('/posts', postRoutes);  // localhost:5000/posts
 
 // body-parser extracts the entire body portion of an incoming request stream and exposes it on req.body. Request post + put
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 
-// 
+// cross origin ressource sharing before routes
 app.use(cors());
 
+// init routes
+app.use('/posts', postRoutes);  // localhost:5000/posts
 
 // mongoDB Atlas db connection with mongoose
 
@@ -34,7 +32,7 @@ const PORT = process.env.PORT || 5000;
 
 mongoose.connect( 
     DATABASE_CONNECTION, 
-    {useNewUrlParser: true, useUnifiedTopology: true} 
+    {useNewUrlParser: true, useUnifiedTopology: true}
 )
     .then(() => app.listen(
         PORT, 

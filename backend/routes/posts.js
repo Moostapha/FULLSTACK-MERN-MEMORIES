@@ -6,15 +6,22 @@ import express  from "express";
 const router = express.Router();
 
 // Importation des fonctions du controller
-import {getAllPosts, createPost} from '../controllers/posts.js'
+import {getAllPosts, createPost, updatePost, deletePost} from '../controllers/posts.js'
+
+
+// ROUTES
 
 // GET route pour test avec logique métier
 router.get('/', getAllPosts);
 
-router.get('/', createPost);
+// POST create post
+router.post('/', createPost);
 
+// PATCH update post existing documents
+router.patch('/:id', updatePost)
 
-
+// DELETE post
+router.delete('/:id', deletePost)
 
 // export router
 export default router;
